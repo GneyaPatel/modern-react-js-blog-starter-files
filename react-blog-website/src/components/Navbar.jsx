@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 //react icons
-import { FaFacebook, FaTwitter, FaBars  } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaBars } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
  
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+    }
     //navitems
     const navItems =[
         {path:"/", link: "Home" },
@@ -16,8 +22,8 @@ const Navbar = () => {
 ,
     ]
   return (
-    <header className='bg-black text-white'>
-      <nav className='px-4 py-4 max-w-7xl mx-0'>
+    <header className='bg-black text-white fixed top-0 left-0 right-0'>
+      <nav className='px-4 py-4 max-w-7xl mx-auto flex justify-between item-center '>
         <a href="/"  className='text-xl font-bold text-white'>Design<span className='text-orange-500'>DK</span></a>
 
         {/* navitems for lg devices*/}
@@ -37,10 +43,25 @@ const Navbar = () => {
         </div>
 
         {/*mobile menu btn, display mobile screen */}
-        <div>
-          <button className='cursor-pointer'><FaBars className='w-5 h-5'/></button>
+        <div className='md:hidden'>
+          <button onClick={toggleMenu} className='cursor-pointer'>
+            {
+              isMenuOpen ? <FaXmark className='w-5 h-5'/> : <FaBars className='w-5 h-5'/>
+            }
+          </button>
         </div>
       </nav>
+
+      {/*menu items only for mobile*/}
+      <div>
+      <ul className='md:hidden gap-12 text-lg block space-y-4 px-4 py-6 mt-14 bg-white'>
+          {
+           navItems.map(({path,link})=><li className='text-white' key={path}>
+              <NavLink to={path}>{link}</NavLink>
+           </li>)
+          }
+        </ul>
+      </div>
     </header>
   )
 }
