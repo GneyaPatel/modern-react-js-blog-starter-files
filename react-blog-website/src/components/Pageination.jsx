@@ -13,11 +13,9 @@ const Pageination = ({onPageChange, currentPage, blogs, pageSize}) => {
     return (
         <ul>
             <li>
-                <button onClick={()=>onPageChange(currentPage -1)} disabled={currentPage ===1}> Pervious</button>
+                <button onClick={()=>onPageChange(currentPage - 1)} disabled={currentPage ===1}>Pervious</button>
             </li>
-            <div>
-                {renderPaginationLink()}
-            </div>
+            <div>{renderPaginationLink()}</div>
             <li>
                 <button>Next</button>
             </li>
