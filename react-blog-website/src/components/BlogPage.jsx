@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import BlogCards from './BlogCards';
 import Pageination from './Pageination';
+import CategorySelection from './CategorySelection';
+import Sidebar from './Sidebar';
 
 const BlogPage = () => {
     const [blogs,setBlogs] = useState([]);
@@ -42,15 +44,18 @@ const BlogPage = () => {
   return (
     <div>
         {/*caterogy section*/}
-        <div>Page section</div>
+        <div><CategorySelection onSelectCategory ={handleCategoryChange} selectedCategory={selectedCategory} activeCategory={activeCategory}/></div>
 
-        {/*blogcards section */}
-        <div>
+        <div className='flex flex-col lg:flex-row gap-12'>
+            {/*blogcards section */}
             <BlogCards blogs={blogs} currentPage={currentPage} selectedCategory={selectedCategory} pageSize={pageSize}/>
+
+            {/*sidebar component*/}
+            <Sidebar/>
         </div>
 
         {/*pagination section */}
-        <div><Pageination onPageChange={handleCategoryChange} currentPage={currentPage} blogs={blogs} pageSize={pageSize}/></div>
+        <div><Pageination onPageChange={handlePageChange} currentPage={currentPage} blogs={blogs} pageSize={pageSize}/></div>
     </div>
   )
 }
