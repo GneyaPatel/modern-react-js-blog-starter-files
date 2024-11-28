@@ -86,20 +86,9 @@ const Footer = () => {
             {/*Subscription */}
             <div className='md:max-w-md lg:col-span-2 lg:mt-0 mt-5'>
                 <p className='font-medium tracking-wide text-gray-300'>Subscribe for update</p>
-                <ul className='mt-2 space-y-2'>
-                  <li>
-                    <a href="/" className='text-gray-500 transition-color duration-300 hover:text-orange-500'>Web</a>
-                  </li>
-                  <li>
-                    <a href="/" className='text-gray-500 transition-color duration-300 hover:text-orange-500'>E-commarce</a>
-                  </li>
-                  <li>
-                    <a href="/" className='text-gray-500 transition-color duration-300 hover:text-orange-500'>Bussiness</a>
-                  </li>
-                  <li>
-                    <a href="/" className='text-gray-500 transition-color duration-300 hover:text-orange-500'>Entertainment</a>
-                  </li>
-                </ul>
+                <form>
+                  <input type="email" name="email" id="email" className='flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-white border-gray-300 rounded shadow-sm aspect-auto md:mr-2 md:mb-0 focus:border-purple-400 focus:outline-none'/>
+                </form>
             </div>
           </div>
          
