@@ -4,10 +4,12 @@ import { NavLink } from 'react-router-dom'
 //react icons
 import { FaFacebook, FaTwitter, FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import Modal from './Modal';
  
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleMenu = () => {
       setIsMenuOpen(!isMenuOpen);
@@ -21,6 +23,16 @@ const Navbar = () => {
         {path:"/contact", link: "Contact"}
 ,
     ]
+
+    //modal details
+    const openModal = () =>{
+      setIsModalOpen(true);
+    }
+
+    const closeModal = () =>{
+      setIsModalOpen(false);
+    }
+
   return (
     <header className='bg-black text-white fixed top-0 left-0 right-0'>
       <nav className='px-4 py-4 max-w-7xl mx-auto flex justify-between item-center '>
@@ -45,8 +57,11 @@ const Navbar = () => {
         <div className='text-white lg:flex gap-4 items-center hidden'>
           <a href="/" className='hover:text-orange-500'><FaFacebook/></a>
           <a href="/" className='hover:text-orange-500'><FaTwitter  /></a>
-          <button className='bg-orange-500 px-6 py-2 font-medium round hover:bg-white hover:text-orange-500 transition-all duration-200 ease-in'>Log-in</button>
+          <button onClick={openModal} className='bg-orange-500 px-6 py-2 font-medium round hover:bg-white hover:text-orange-500 transition-all duration-200 ease-in'>Log-in</button>
         </div>
+
+        {/*Our modal component is here*/}
+        <Modal isOpen={isModalOpen} onClose={closeModal}/>
 
         {/*mobile menu btn, display mobile screen */}
         <div className='md:hidden'>
